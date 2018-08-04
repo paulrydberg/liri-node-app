@@ -1,6 +1,10 @@
 require("dotenv").config();
 
 const keys = require("./keys.js");
+const fs = require("fs");
+const os = require("os");
+const _ = require("lodash");
+const dotenv = require("dotenv");
 
 var spotify = new Spotify(keys.spotify);
 var client = new Twitter(keys.twitter);
@@ -18,5 +22,43 @@ var spotifyFind = "spotify-this-song";
 //If no song is provided then your program will default to "The Sign" by Ace of Base.
 
 var movieFind = "movie-this";
+//node liri.js movie-this '<movie name here>'
+//This will output the following information to your terminal/bash window:
+//Title of the movie.
+//Year the movie came out.
+//IMDB Rating of the movie.
+//Rotten Tomatoes Rating of the movie.
+//Country where the movie was produced.
+//Language of the movie.
+//Plot of the movie.
+//Actors in the movie.
+
+//If the user doesn't type a movie in, the program will output data for the movie 'Mr. Nobody.'
+//If you haven't watched "Mr. Nobody," then you should: <http://www.imdb.com/title/tt0485947/>
+//It's on Netflix!
+//You'll use the request package to retrieve data from the OMDB API. Like all of the in-class activities, the OMDB API requires an API key. You may use `trilogy`.
 
 var doThing = "do-what-it-says";
+//node liri.js do-what-it-says
+//Using the `fs` Node package, LIRI will take the text inside of random.txt and then use it to call one of LIRI's commands.
+//It should run `spotify-this-song` for "I Want it That Way," as follows the text in `random.txt`.
+// Feel free to change the text in that document to test out the feature for other commands.
+
+// ### Create a README.md
+// Add a `README.md` to your repository describing the project. Here are some resources
+//for creating your `README.md`. Here are some resources to help you along the way:
+
+// * [About READMEs](https://help.github.com/articles/about-readmes/)
+// * [Mastering Markdown](https://guides.github.com/features/mastering-markdown/)
+
+// ### BONUS ////////////////////////////////////////////////////////////////////////////////////////////////////
+// * In addition to logging the data to your terminal/bash window, output the data to a .txt file called `log.txt`.
+// * Make sure you append each command you run to the `log.txt` file.
+// * Do not overwrite your file each time you run a command.
+
+// fs.appendFile("log.txt", `Blah Blah ${object.path}.`, err => {
+//   if (err) {
+//     console.log("Unable to write to file");
+//   }
+// });
+////////////////////////////////////////////////////////////////////////////////////////////////////
