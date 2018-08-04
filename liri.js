@@ -1,48 +1,63 @@
-require("dotenv").config();
+console.log("Starting liri.js");
+//require("dotenv").config();
 
-const keys = require("./keys.js");
 const fs = require("fs");
 const os = require("os");
+const request = require("request");
 const _ = require("lodash");
 const dotenv = require("dotenv");
+const keys = require("./keys.js");
+const secretKeys = require("./secretkeys.js");
+const findASong = require("./findASong.js");
+const tweetTweet = require("./tweetTweet.js");
+const OMDBmovies = require("./OMDBmovies.js");
+const doAThing = require("./doAThing.js");
 
-var spotify = new Spotify(keys.spotify);
-var client = new Twitter(keys.twitter);
+const util = require("util");
 
 var tweetFind = "my-tweets";
-// This will show your last 20 tweets and when they were created at in your terminal/bash window.
-
 var spotifyFind = "spotify-this-song";
-//node liri.js spotify-this-song '<song name here>'
-//This will show the following information about the song in your terminal/bash window
-//Artist(s)
-//The song's name
-//A preview link of the song from Spotify
-//The album that the song is from
-//If no song is provided then your program will default to "The Sign" by Ace of Base.
-
 var movieFind = "movie-this";
-//node liri.js movie-this '<movie name here>'
-//This will output the following information to your terminal/bash window:
-//Title of the movie.
-//Year the movie came out.
-//IMDB Rating of the movie.
-//Rotten Tomatoes Rating of the movie.
-//Country where the movie was produced.
-//Language of the movie.
-//Plot of the movie.
-//Actors in the movie.
-
-//If the user doesn't type a movie in, the program will output data for the movie 'Mr. Nobody.'
-//If you haven't watched "Mr. Nobody," then you should: <http://www.imdb.com/title/tt0485947/>
-//It's on Netflix!
-//You'll use the request package to retrieve data from the OMDB API. Like all of the in-class activities, the OMDB API requires an API key. You may use `trilogy`.
-
 var doThing = "do-what-it-says";
-//node liri.js do-what-it-says
-//Using the `fs` Node package, LIRI will take the text inside of random.txt and then use it to call one of LIRI's commands.
-//It should run `spotify-this-song` for "I Want it That Way," as follows the text in `random.txt`.
-// Feel free to change the text in that document to test out the feature for other commands.
+
+var liriCommand = process.argv[2];
+var commandQuery = process.argv[3];
+
+var result;
+
+if (liriCommand === spotifyFind) {
+  ////////////////////////////////
+  if (commandQuery == null || undefined || "") {
+    console.log("Please Type A Song Name.");
+  } else {
+    result = findASong.lookup();
+  }
+  ////////////////////////////////
+} else if (liriCommand === tweetFind) {
+  result = tweetTweet.lookup();
+} else if (liriCommand === movieFind) {
+  ////////////////////////////////
+  if (commandQuery == null || undefined || "") {
+    console.log("Please Type A Movie Name.");
+  } else {
+    result = OMDBmovies.lookup();
+  }
+  ////////////////////////////////
+} else if (liriCommand === doThing) {
+  result = doAThing.lookup();
+  //console.log(result);
+} else {
+  console.log("LIRI wasn't given a command.");
+}
+
+// End Working Code
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// var result = notes.addNote();
+// console.log(result);
+
+// Prints the outputNumber
+//console.log(outputNum);
 
 // ### Create a README.md
 // Add a `README.md` to your repository describing the project. Here are some resources
