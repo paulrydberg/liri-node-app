@@ -64,4 +64,5 @@ typings/
 .DS_Store
 
 # Private Secret Keys File
+secretkeys.js
 secretkeys2.js
