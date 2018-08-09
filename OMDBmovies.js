@@ -6,7 +6,7 @@ const request = require("request");
 const _ = require("lodash");
 const dotenv = require("dotenv");
 const keys = require("./keys.js");
-const secretKeys = require("./secretkeys.js");
+const skeynew = require("./skeynew.js");
 const util = require("util");
 
 var nodeArgs = process.argv;
@@ -20,7 +20,7 @@ for (var i = 3; i < nodeArgs.length; i++) {
   }
 }
 
-var apiKey = `${secretKeys.OMDB}`;
+var apiKey = `${skeynew.OMDB}`;
 
 var queryUrl =
   "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=" + apiKey;

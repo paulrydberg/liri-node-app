@@ -12,14 +12,14 @@ const request = require("request");
 const _ = require("lodash");
 const dotenv = require("dotenv");
 const keys = require("./keys.js");
-const secretKeys = require("./secretkeys.js");
+const skeynew = require("./skeynew.js");
 const Spotify = require("node-spotify-api");
 
 //const findASong = require("./findASong.js");
 const util = require("util");
 
-var spotifyUser = `${secretKeys.ClientID}`;
-var spotifyPass = `${secretKeys.ClientSecret}`;
+var spotifyUser = `${skeynew.ClientID}`;
+var spotifyPass = `${skeynew.ClientSecret}`;
 
 var spotify = new Spotify({
   id: spotifyUser,

@@ -7,7 +7,6 @@ const request = require("request");
 const _ = require("lodash");
 const dotenv = require("dotenv");
 const keys = require("./keys.js");
-const secretKeys = require("./secretkeys.js");
 const findASong = require("./findASong.js");
 const tweetTweet = require("./tweetTweet.js");
 const OMDBmovies = require("./OMDBmovies.js");
