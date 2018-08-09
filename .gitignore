@@ -64,5 +64,6 @@ typings/
 .DS_Store
 
 # Private Secret Keys File
+skeynew.js
 secretkeys.js
 secretkeys2.js
