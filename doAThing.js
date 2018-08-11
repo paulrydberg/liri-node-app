@@ -3,16 +3,17 @@
 //It should run `spotify-this-song` for "I Want it That Way," as follows the text in `random.txt`.
 // Feel free to change the text in that document to test out the feature for other commands.
 
-console.log("Starting doAThing.js");
+//console.log("Starting doAThing.js");
 //require("dotenv").config();
 
 const fs = require("fs");
 //^^^^ Used to append data to logs.txt and to read whats in the random.txt file.
 
 const Spotify = require("node-spotify-api");
+const keys = require("./keys.js");
 
-var spotifyUser = process.env.SPOTIFY_ID;
-var spotifyPass = process.env.SPOTIFY_SECRET;
+var spotifyUser = keys.spotify.id;
+var spotifyPass = keys.spotify.secret;
 
 var spotify = new Spotify({
   id: spotifyUser,

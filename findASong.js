@@ -1,10 +1,12 @@
-console.log("Starting spotify.js");
+//console.log("Starting spotify.js");
 
 const fs = require("fs");
 const Spotify = require("node-spotify-api");
+const keys = require("./keys.js");
+//console.log(keys.spotify.id);
 
-var spotifyUser = process.env.SPOTIFY_ID;
-var spotifyPass = process.env.SPOTIFY_SECRET;
+var spotifyUser = keys.spotify.id;
+var spotifyPass = keys.spotify.secret;
 
 var nodeArgs = process.argv;
 var searchTerm = "";

@@ -1,4 +1,4 @@
-console.log("Starting keys.js");
+//console.log("Starting keys.js");
 
 exports.twitter = {
   consumer_key: process.env.TWITTER_CONSUMER_KEY,
@@ -10,4 +10,8 @@ exports.twitter = {
 exports.spotify = {
   id: process.env.SPOTIFY_ID,
   secret: process.env.SPOTIFY_SECRET
+};
+
+exports.OMDB = {
+  classAPI: process.env.OMDB_ACCESS_TOKEN
 };

@@ -1,7 +1,8 @@
-console.log("Starting OMDBmovies.js");
+//console.log("Starting OMDBmovies.js");
 
 const fs = require("fs");
 const request = require("request");
+const keys = require("./keys.js");
 
 var nodeArgs = process.argv;
 var movieName = "";
@@ -14,7 +15,7 @@ for (var i = 3; i < nodeArgs.length; i++) {
   }
 }
 
-var apiKey = process.env.OMDB_ACCESS_TOKEN;
+var apiKey = keys.OMDB.classAPI;
 
 var queryUrl =
   "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=" + apiKey;
