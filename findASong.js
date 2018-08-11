@@ -1,26 +1,10 @@
 console.log("Starting spotify.js");
 
-//node liri.js spotify-this-song '<song name here>'
-//This will show the following information about the song in your terminal/bash window
-//Artist(s)
-//The song's name
-//A preview link of the song from Spotify
-//The album that the song is from
-//If no song is provided then your program will default to "The Sign" by Ace of Base.
-
 const fs = require("fs");
-const os = require("os");
-const request = require("request");
-const _ = require("lodash");
-const dotenv = require("dotenv");
-const util = require("util");
-const skeynew = require("./skeynew.js");
 const Spotify = require("node-spotify-api");
-const keys = require("./keys.js");
-//const doAThing = require("./doAThing.js");
 
-var spotifyUser = `${skeynew.ClientID}`;
-var spotifyPass = `${skeynew.ClientSecret}`;
+var spotifyUser = process.env.SPOTIFY_ID;
+var spotifyPass = process.env.SPOTIFY_SECRET;
 
 var nodeArgs = process.argv;
 var searchTerm = "";
@@ -52,61 +36,20 @@ module.exports.lookup = () =>
       var prev = data.tracks.items[i].preview_url;
       console.log("Artist: " + artist); //Artist Name
       console.log("Album Name: " + album); //Album Name
-      console.log("Song Name :" + song); //Song Name
+      console.log("Song Name: " + song); //Song Name
 
       if (prev == null) {
-        console.log('"The Sign" by Ace of Base');
+        console.log('No Audio Available-----you get "The Sign" by Ace Of Bass');
+
+        console.log(
+          "https://p.scdn.co/mp3-preview/4c463359f67dd3546db7294d236dd0ae991882ff?cid=5f1cfc7876a14cbfa073a976688d6745"
+        );
         //console.log("song link");
       } else {
         console.log(data.tracks.items[i].preview_url); //Song Preview
       }
       var allData =
-        "Artist: " + artist + ". Album Name: " + album + ". Song Name :" + song;
+        "Artist: " + artist + ". Album Name: " + album + ". Song Name: " + song;
       fs.appendFileSync("logs.txt", allData);
     }
   });
-
-//search: function({ type: 'artist OR album OR track', query: 'My search query', limit: 20 }, callback);
-
-//var i = 0;
-
-//console.log(util.inspect(data, { showHidden: false, depth: null }));
-//console.log(data);
-// console.log(data.tracks.items[i].album.name); //Album Name
-// console.log(data.tracks.items[i].artists[0].name); //Artist Name
-// console.log(data.tracks.items[i].name); //Song Name
-
-// prev = data.tracks.items[i].preview_url;
-// //console.log(prev);
-
-// if (prev == null) {
-//   console.log('"The Sign" by Ace of Base');
-//   console.log("song link");
-// } else {
-//   console.log(data.tracks.items[i].preview_url); //Song Preview
-// }
-
-// var aceOfBase = () =>
-//   spotify.search({ type: "track", query: "The Sign" }, (err, data) => {
-//     if (err) {
-//       return console.log("Error occurred: " + err);
-//     }
-//     var i = 4;
-//     //console.log(util.inspect(data, { showHidden: false, depth: null }));
-//     //console.log(data);
-//     console.log(data.tracks.items[i].album.name); //Album Name
-//     console.log(data.tracks.items[i].artists[0].name); //Artist Name
-//     console.log(data.tracks.items[i].name); //Song Name
-
-//     prev = data.tracks.items[i].preview_url;
-//     //console.log(prev);
-
-//     if (prev == null) {
-//       console.log('"The Sign" by Ace of Base');
-//       console.log("song link");
-//     } else {
-//       console.log(data.tracks.items[i].preview_url); //Song Preview
-//     }
-//   });
-
-// aceOfBase();

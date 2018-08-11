@@ -1,18 +1,12 @@
 console.log("Starting liri.js");
-//require("dotenv").config();
+//require("dotenv/config");
+require("dotenv").config();
 
-const fs = require("fs");
-const os = require("os");
-const request = require("request");
-const _ = require("lodash");
-const dotenv = require("dotenv");
-const keys = require("./keys.js");
+// const dotenv = require("dotenv");
 const findASong = require("./findASong.js");
 const tweetTweet = require("./tweetTweet.js");
 const OMDBmovies = require("./OMDBmovies.js");
 const doAThing = require("./doAThing.js");
-
-const util = require("util");
 
 var tweetFind = "my-tweets";
 var spotifyFind = "spotify-this-song";
@@ -52,12 +46,6 @@ if (liriCommand === spotifyFind) {
 // End Working Code
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// var result = notes.addNote();
-// console.log(result);
-
-// Prints the outputNumber
-//console.log(outputNum);
-
 // ### Create a README.md
 // Add a `README.md` to your repository describing the project. Here are some resources
 //for creating your `README.md`. Here are some resources to help you along the way:
@@ -70,9 +58,4 @@ if (liriCommand === spotifyFind) {
 // * Make sure you append each command you run to the `log.txt` file.
 // * Do not overwrite your file each time you run a command.
 
-// fs.appendFile("log.txt", `Blah Blah ${object.path}.`, err => {
-//   if (err) {
-//     console.log("Unable to write to file");
-//   }
-// });
 ////////////////////////////////////////////////////////////////////////////////////////////////////

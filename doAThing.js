@@ -7,19 +7,12 @@ console.log("Starting doAThing.js");
 //require("dotenv").config();
 
 const fs = require("fs");
-const os = require("os");
-const request = require("request");
-const _ = require("lodash");
-const dotenv = require("dotenv");
-const keys = require("./keys.js");
-const skeynew = require("./skeynew.js");
+//^^^^ Used to append data to logs.txt and to read whats in the random.txt file.
+
 const Spotify = require("node-spotify-api");
 
-//const findASong = require("./findASong.js");
-const util = require("util");
-
-var spotifyUser = `${skeynew.ClientID}`;
-var spotifyPass = `${skeynew.ClientSecret}`;
+var spotifyUser = process.env.SPOTIFY_ID;
+var spotifyPass = process.env.SPOTIFY_SECRET;
 
 var spotify = new Spotify({
   id: spotifyUser,
@@ -32,13 +25,7 @@ module.exports.lookup = () =>
       return console.log(error);
     }
 
-    //console.log(data);
-
     var dataArr = data.split(",");
-
-    //console.log(dataArr[0]);
-    //console.log(dataArr[1]);
-
     var command = dataArr[0];
     var song = dataArr[1];
 
@@ -55,11 +42,16 @@ module.exports.lookup = () =>
         var prev = data.tracks.items[i].preview_url;
         console.log("Artist: " + artist); //Artist Name
         console.log("Album Name: " + album); //Album Name
-        console.log("Song Name :" + song); //Song Name
+        console.log("Song Name: " + song); //Song Name
 
         if (prev == null) {
-          console.log('"The Sign" by Ace of Base');
-          //console.log("song link");
+          console.log(
+            'No Audio Available-----you get "The Sign" by Ace Of Bass'
+          );
+
+          console.log(
+            "https://p.scdn.co/mp3-preview/4c463359f67dd3546db7294d236dd0ae991882ff?cid=5f1cfc7876a14cbfa073a976688d6745"
+          );
         } else {
           console.log(data.tracks.items[i].preview_url); //Song Preview
         }
